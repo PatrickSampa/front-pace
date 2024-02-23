@@ -1,0 +1,17 @@
+version: '3'
+services:
+  app:
+    image: patricksampa/front-pace:1.0.0
+    restart: always
+    hostname: visao-{{.Task.Slot}}
+    networks:
+      - visao
+    environment:
+      CMD_Python: python3
+      PORT_DOCKER: 3000
+      API_PORT: 3000
+    ports:
+      - "3000:3000"  
+networks:
+  visao:
+    driver: bridge
