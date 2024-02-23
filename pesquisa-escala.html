@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>AGU - Pesquisar Escala</title>
+
+  <!-- Fontes personalizadas para este modelo -->
+  <link href="node_modules/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link
+    href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+    rel="stylesheet">
+
+  <!-- Estilos personalizadas para este modelo -->
+  <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/popup.css">
+
+
+  <link href="css/pint-dashboard.css" rel="stylesheet">
+
+  <!-- Estilos personalizados para esta página -->
+  <link href="node_modules/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <!-- Barra Lateral -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+      <!-- Sidebar - Brand -->
+      <a class="sidebar-brand d-flex align-items-center justify-content-center m-1" href="index.html">
+        <div class="sidebar-brand-icon">
+          <img src="./img/pace logo.png" class="img-fluid">
+        </div>
+        <div class="sidebar-brand-text mx-3"><img src="./img/pace.png" class="img-fluid"></div>
+      </a>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider my-0">
+
+      <!-- Nav Item - Dashboard -->
+      <li class="nav-item">
+        <a class="nav-link" href="index.html">
+          <i class="fas fa-home"></i>
+          <span>Home</span></a>
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        Menu principal
+      </div>
+
+      <!-- Nav Item - Cadastro Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
+          aria-controls="collapseTwo">
+          <i class="fas fa-plus"></i>
+          <span>Cadastro</span>
+        </a>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="cadastro-pautista.html">Pautista</a>
+            <a class="collapse-item" href="cadastro-advogado.html">Advogado</a>
+            <a class="collapse-item" href="cadastro-pauta.html">Pauta</a>
+          </div>
+        </div>
+      </li>
+
+      <!-- Nav Item - Escala Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+          aria-expanded="true" aria-controls="collapseUtilities">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Escala</span>
+        </a>
+        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="gera-escala.html">Gerar</a>
+          </div>
+        </div>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#excluirMenu" aria-expanded="true"
+          aria-controls="excluirMenu">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Mutirão</span>
+        </a>
+        <div id="excluirMenu" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="excluirMutirao.html">Excluir</a>
+          </div>
+        </div>
+      </li>
+
+      <!-- Nav Item - Consulta Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
+          aria-controls="collapsePages">
+          <i class="fas fa-search"></i>
+          <span>Consulta</span>
+        </a>
+        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="pesquisa-pautista.html">Pautista</a>
+            <a class="collapse-item" href="pesquisa-advogado.html">Advogado</a>
+            <a class="collapse-item" href="pesquisa-escala.html">Escala</a>
+          </div>
+        </div>
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider d-none d-md-block">
+
+      <!-- Sidebar Toggler (Sidebar) -->
+      <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+      </div>
+
+    </ul>
+    <!-- End of Sidebar -->
+
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+
+        <!-- Topbar -->
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+          <!-- Sidebar Toggle (Topbar) -->
+          <form class="form-inline">
+            <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+              <i class="fa fa-bars"></i>
+            </button>
+          </form>
+
+          <!-- Topbar Search -->
+          <div class="my-3">
+            <p class="font-weight-bold  text-left h4">PACE - PROGRAMA DE AGENDAMENTO E CONTROLE DE ESCALAS </p>
+          </div>
+
+
+          <!-- Topbar Navbar -->
+          <ul class="navbar-nav ml-auto">
+
+            <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+            <li class="nav-item dropdown no-arrow d-sm-none">
+              <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-search fa-fw"></i>
+              </a>
+              <!-- Dropdown - Messages -->
+              <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                aria-labelledby="searchDropdown">
+                <form class="form-inline mr-auto w-100 navbar-search">
+                  <div class="input-group">
+                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+                      aria-label="Search" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                      <button class="btn btn-primary" type="button">
+                        <i class="fas fa-search fa-sm"></i>
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </li>
+
+            <!-- Nav Item - Alerts -->
+
+
+            <!-- Nav Item - Messages -->
+
+
+            <div class="topbar-divider d-none d-sm-block"></div>
+
+            <!-- Nav Item - User Information -->
+            <li class="nav-item dropdown no-arrow">
+              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Nome Usuário</span>
+                <img class="img-profile rounded-circle" src="./img/source-404.jfif">
+              </a>
+              <!-- Dropdown - User Information -->
+              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="#">
+                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Perfil
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Sair
+                </a>
+              </div>
+            </li>
+
+          </ul>
+
+        </nav>
+        <!-- End of Topbar -->
+
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+
+          <!-- popup Cadastrar tarefa -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="myModalLabel">Cadastro de Tarefas</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body position-relative">
+
+                <div class="position-absolute d-none rounded shadow" id="loading" style=" background-color: white; width: 100px; height: 100px; top: 42%; left: 39%; z-index: 99;">
+                  <div class="loading-overlay d-flex align-items-center justify-content-center" style="height: 100%;">
+                    <div class="spinner-border spinner-border-lg text-primary" role="status">
+                      <span class="sr-only">Loading...</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="position-absolute rounded shadow d-none" id="popup-info" style=" background-color: white; width: 200px; height: 100px; top: 42%; left: 29%; z-index: 99; position: relative;">
+                  <div class="d-flex align-items-center justify-content-center flex-column" style="height: 100%;">
+                    <h6 id="info-span" class="modal-title"></h6>
+                    <button type="button" class="btn btn-secondary align-items-center" id="btn-ok" style="z-index:100">OK</button>
+                  </div>
+                </div>
+
+                <form action="submit" class="form-cadastro-tarefa">
+                  <div class="form-content" id="form-content-popup-login">
+                    <h5>Login Sapiens</h5>
+                    <label for="">CPF</label>
+                    <div class="position-relative">
+                      <input type="text" id="cpf-input" class="form-control">
+                    </div>
+                    <label for="">Senha</label>
+                    <input type="password" id="senha-input" class="form-control">
+                  </div>
+                  <div class="form-content d-none" id="form-content-popup-cadastro">
+                    <h5>Informações de Cadastro</h5>
+                    <div class="form-group">
+                      <label for="">Etiqueta</label>
+                      <label class="text-danger">*</label>
+                      <input type="text" id="input-etiqueta" class="form-control">
+                    </div>
+                    <div class="form-group">
+                      <label for="">Setor Responsavel</label>
+                      <label class="text-danger">*</label>
+                      <div class="position-relative">
+                        <input type="text" id="input-setor-responsavel" class="form-control">
+                        <div id="search-results-setor-responsavel" class="mt-0 searchResults position-absolute"></div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="">Especie Tarefa</label>
+                      <label class="text-danger">*</label>
+                      <div class="position-relative">
+                        <input type="text" id="input-especie-tarefa" class="form-control">
+                        <div id="search-results-especie-tarefa" class="mt-0 searchResults position-absolute"></div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+                <button type="button" class="btn btn-secondary d-flex align-items-center" id="btn-cadastro-tarefa">Login</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Popup info -->
+        <div class="modal fade" id="infoPopup" tabindex="-1" role="dialog" aria-labelledby="modal2Label" aria-hidden="true">
+          <div class="modal-dialog modal-sm" role="document" style="top: 7%;">
+            <div class="modal-content">
+              <div class="modal-header">
+                <span class="material-symbols-outlined" id="icon-msg-popup"></span>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <p id="info-msg">Conteúdo do Modal 2</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- popup confirmacao -->
+        <div class="modal fade" id="confirm-popup" tabindex="-1" role="dialog" aria-labelledby="modalIntermediarioLabel">
+          
+          <div class="modal-dialog modal-dialog-centered" role="document" style="top: -30%;">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="popupConfirmacao">ATENÇÃO!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <p>A sua pesquisa contém tarefas já cadastradas no sapiens, deseja continuar?</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
+                <button type="button" class="btn btn-primary" id="abrirProximoPopup">Sim</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        
+
+
+          <!-- Page Heading -->
+          <div class="container no-print" id="formFiltrosEscala">
+            <h1 class="h3 titulo-formulario"><strong>Pesquisar Escala</strong></h1>
+            <hr>
+            <input type="hidden" name="_token" value="ayg6KirGuH8DsKdVd1vfjYbLmTAPWMuhWDa1aAvR">
+            <div class="row">
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="data_escala">Data inicial</label>
+                  <input type="date" name="data" id="data" class="form-control form-control-sm">
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="data2">Data final</label>
+                  <input type="date" name="data2" id="data2" class="form-control form-control-sm">
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="hora">Hora</label>
+                  <input type="text" name="hora" id="hora" class="form-control form-control-sm">
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="vara">Vara</label>
+                  <select class="browser-default custom-select custom-select-sm" id="vara">
+                    <option selected></option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="sala">Sala</label>
+                  <input type="text" name="sala" id="sala" class="form-control form-control-sm">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="pautista">Pautista</label>
+                  <select class="browser-default custom-select custom-select-sm" id="pautista">
+                    <option selected></option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="pautista">Status Tarefa Sapiens</label>
+                  <select class="browser-default custom-select custom-select-sm" id="status-tarefa">
+                    <option>Não Cadastrada</option>
+                    <option>Cadastrada</option>
+                    <option selected>Todos</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+            </div>
+              <div class="col-md-11 mt-3 text-right">
+                <button type="reset" class="btn btn-primary" onclick="refresh()">Limpar</button>
+                <button type="submit" id="pesquisar" class="btn btn-secondary">
+                  Pesquisar
+                </button>
+            </div>
+            <br>
+          </div>
+          <div class="row mt-3 justify-content-end mr-1 no-print float-right">
+            <div>
+              <div class="btn-group btn-group-sm" role="group">
+                <button type="button" id="btnTarefas" class="btn btn-secondary mr-2 rounded" data-target="#myModal" disabled>
+                  <span>Cadastrar Tarefas (Sapiens)</span>
+                </button>
+                <a class="collapse-item" href="editar-escala.html">
+                  <button id="editar" type="button" class="btn btn-secondary mr-2 rounded" data-url="#" title="Editar">
+                    <i class="far fa-edit"></i>
+                  </button>
+                </a>
+                <button id="print-escala" type="button" class="btn btn-success rounded" data-url="#"
+                  title="Gerar Csv" data-placement="top">
+                  <i class="fa fa-download"></i>
+                </button>
+                
+              </div>
+            </div>
+          </div>
+          <div class="dropdown d-inline-block">
+            <button id="botaoSelecionado" class="btn btn-secondary dropdown-toggle" type="button"
+              id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              10
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <button id="dez" class="dropdown-item" value="10">10</a>
+                <button id="cinquenta" class="dropdown-item" value="50">50</a>
+                  <button id="cem" class="dropdown-item" value="100">100</a>
+                    <button id="tudo"  class="dropdown-item" value="0">tudo</a>
+            </div>
+          </div><br>
+          <div class="my-2 px-2 bg-white d-inline-block rounded">
+            <label id="total"></label>
+
+          </div>
+          <!-- DataTales Example -->
+          <div class="card shadow mb-4" id='card-escala'>
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary no-print">Tabela de Escala de Audiência</h6>
+              <!-- Page Heading -->
+              <h1 class="h3 mb-0 text-gray-800 only-print">Escala de Audiência</h1>
+            </div>
+            <div class="card-body">
+              <div id="table-escala" class="table-responsive">
+                <table class="table table-bordered" id="dataTablePesquisa" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>DATA</th>
+                      <th>HORA</th>
+                      <th>TURNO</th>
+                      <th>SALA</th>
+                      <th>VARA</th>
+                      <th>PROCESSO</th>
+                      <th>NOME DA PARTE</th>
+                      <th>STATUS TAREFA SAPIENS</th>
+                      <th>PAUTISTA</th>
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <tr>
+                      <th>DATA</th>
+                      <th>HORA</th>
+                      <th>TURNO</th>
+                      <th>SALA</th>
+                      <th>VARA</th>
+                      <th>PROCESSO</th>
+                      <th>NOME DA PARTE</th>
+                      <th>STATUS TAREFA SAPIENS</th>
+                      <th>PAUTISTA</th>
+                    </tr>
+                  </tfoot>
+                  <tbody>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="row mt-3 justify-content-end mr-1 no-print">
+
+            <ul class="pagination">
+              <li class="page-item pr-2"><button id="botaoAnterior" class="btn bg-white">Anterior</button></li>
+              <li class="page-item pr-2 pt-2"><label id="pageInfo"> Página 0 de 0 </label></li>
+              <li class="page-item"><button id="botaoProximo" class="btn bg-white">Próximo</button></li>
+            </ul>
+          </div>
+        </div>
+        <!-- /.container-fluid -->
+
+
+      </div>
+      <!-- End of Main Content -->
+
+      <div class="modal fade" id="gerandoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Gerando csv</h5>
+                </div>
+
+                <div class="modal-footer">
+                  <h5 class="modal-title" id="exampleModalLabel">Isto pode levar algum tempo. Aguarde...</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+      <!-- Footer -->
+      <footer class="sticky-footer bg-white no-print">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>Copyright &copy; NUTEC - 2021</span>
+          </div>
+        </div>
+      </footer>
+      <!-- End of Footer -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+  </div>
+  <!-- End of Page Wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Deseja realmente sair?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+          <a class="btn btn-primary" href="login.html">Sair</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- material-icons -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="node_modules/jquery.easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="js/sb-admin-2.min.js"></script>
+
+  <!-- Page level plugins -->
+  <script src="node_modules/datatables.net/js/jquery.dataTables.min.js"></script>
+  <script src="node_modules/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="js/demo/datatables-demo.js"></script>
+  <!-- Service -->
+  <script type="module" src="js/services/pesquisaEscala.js"></script>
+  
+  <script src="./js/axios.min.js"></script>
+
+</body>
+
+</html>
