@@ -1,8 +1,8 @@
 //Ambiente Padrão:
 
-export const baseURL='http://10.191.9.57:8080/';
+export const baseURL='http://10.191.9.80:8080/';
 
-export const baseVisaoURL = 'http://10.191.9.57:3002';
+export const baseVisaoURL = 'http://10.191.9.80:3002';
 
 //ip maquina local
 //export const baseURL='http://10.191.8.159:8080/';
